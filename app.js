@@ -134,3 +134,22 @@ changeQuote.addEventListener("click", (e) => {
   const random = Math.floor(Math.random() * arrQuote.length);
   quote.innerHTML = arrQuote[random];
 });
+
+//Аудиоплеер
+const player = document.querySelector(".player");
+const playerControls = document.querySelector(".player-controls");
+const play = document.querySelector(".play");
+const playPrev = document.querySelector(".play-prev");
+const playNext = document.querySelector(".play-next ");
+
+function playAudio() {
+  audio.currentTime = 0;
+  audio.play();
+}
+function pauseAudio() {
+  audio.pause();
+}
+play.addEventListener("click", () => {
+  console.log(play.addEventListener);
+  document.querySelector("audio").play();
+});
