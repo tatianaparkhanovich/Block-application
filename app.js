@@ -136,20 +136,109 @@ changeQuote.addEventListener("click", (e) => {
 });
 
 //Аудиоплеер
+const playList = [
+  {
+    title: "Oneil feat. Aize - I Can't Stop (Yudzhin Radio Remix) ",
+    src: "./music.mp3/Oneil feat. Aize - I Can't Stop (Yudzhin Radio Remix).mp3",
+  },
+  {
+    title: "Anivar - On My Mind",
+    src: "./music.mp3/Anivar - On My Mind.mp3",
+  },
+  {
+    title: "Aize - Flowers",
+    src: "./music.mp3/Aize - Flowers.mp3",
+  },
+  {
+    title: "NK - Mama Alma",
+    src: "./music.mp3/NK - Mama Alma.mp3",
+  },
+];
 const player = document.querySelector(".player");
 const playerControls = document.querySelector(".player-controls");
 const play = document.querySelector(".play");
-const playPrev = document.querySelector(".play-prev");
-const playNext = document.querySelector(".play-next ");
-
+const playPrevs = document.querySelector(".play-prev");
+console.log(playPrevs);
+const playNexts = document.querySelector(".play-next ");
+console.log(playNexts);
+const audio = document.querySelector("audio");
+const myPlayList = document.querySelector(".play-list");
+let isPlay = false;
+let playNum = 1;
 function playAudio() {
-  audio.currentTime = 0;
+  player.classList.add("plays");
   audio.play();
 }
 function pauseAudio() {
+  player.remove("plays");
   audio.pause();
 }
 play.addEventListener("click", () => {
-  console.log(play.addEventListener);
-  document.querySelector("audio").play();
+  let isPlay = player.classList.contains("plays");
+  if (isPlay) {
+    pauseAudio();
+  } else {
+    playAudio();
+  }
+});
+
+const renderPlayListName = (name) => {
+  myPlayList.insertAdjacentHTML(
+    "beforeend",
+    `<li class="play-item">${name.title}</li>
+    `
+  );
+};
+
+const playListActive = (num) => {
+  li.forEach((item) => {
+    item.classList.remove("item-active");
+  });
+  li[num].classList.add("item-active");
+};
+const playNext = (num) => {
+  if (num === playList.length) {
+    playNum = 1;
+  } else {
+    playNum = num + 1;
+  }
+  playAudio(playList[playNum - 1].title);
+};
+
+const playPrev = (num) => {
+  if (num === 1) {
+    playNum = playList.length;
+  } else {
+    playNum = num - 1;
+  }
+  playAudio(playList[playNum - 1].title);
+};
+
+playList.forEach((item) => {
+  renderPlayListName(item);
+});
+const li = document.querySelectorAll(".play-item");
+play.addEventListener("click", () => {
+  if (!isPlay) {
+    playAudio(playList[playNum - 1].title);
+    play.classList.remove("pause");
+    playListActive(playNum - 1);
+  } else {
+    playAudio(playList[playNum - 1].title);
+    play.classList.add("pause");
+  }
+  play.classList.toggle("pause");
+});
+playNexts.addEventListener("click", () => {
+  console.log(playNexts.addEventListener);
+  isPlay = true;
+  playNext(playNum);
+  playListActive(playNum - 1);
+});
+
+playPrevs.addEventListener("click", () => {
+  console.log(playPrevs.addEventListener);
+  isPlay = true;
+  playPrev(playNum);
+  playListActive(playNum - 1);
 });

@@ -284,3 +284,7 @@ body {
     padding: 5px;
   }
 }
+li {
+  width: 200px;
+  display: block;
+}
