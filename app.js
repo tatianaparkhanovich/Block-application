@@ -168,11 +168,9 @@ let playNum = 1;
 
 function playAudio(title) {
   audio.src = `./music.mp3/${title}.mp3`;
-  player.classList.add("plays");
   audio.play();
 }
 function pauseAudio() {
-  player.remove("pause");
   audio.pause();
 }
 play.addEventListener("click", () => {
@@ -224,11 +222,11 @@ const li = document.querySelectorAll(".play-item");
 play.addEventListener("click", () => {
   console.log(play.addEventListener);
   if (!isPlay) {
-    playAudio(playList[playNum - 1].title);
+    playList[playNum - 1].title;
     play.classList.remove("pause");
     playListActive(playNum - 1);
   } else {
-    playAudio(playList[playNum - 1].title);
+    playList[playNum - 1].title;
     play.classList.add("pause");
   }
   play.classList.toggle("pause");
