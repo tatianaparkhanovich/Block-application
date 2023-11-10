@@ -165,7 +165,9 @@ const audio = document.querySelector("audio");
 const myPlayList = document.querySelector(".play-list");
 let isPlay = false;
 let playNum = 1;
-function playAudio() {
+
+function playAudio(title) {
+  audio.src = `./music.mp3/${title}.mp3`;
   player.classList.add("plays");
   audio.play();
 }
