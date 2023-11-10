@@ -138,8 +138,8 @@ changeQuote.addEventListener("click", (e) => {
 //Аудиоплеер
 const playList = [
   {
-    title: "Oneil feat. Aize - I Can't Stop (Yudzhin Radio Remix) ",
-    src: "./music.mp3/Oneil feat. Aize - I Can't Stop (Yudzhin Radio Remix).mp3",
+    title: "Anivar - Nothing to hide ",
+    src: "./music.mp3/Anivar - Nothing to hide.mp3",
   },
   {
     title: "Anivar - On My Mind",
@@ -169,9 +169,6 @@ let playNum = 1;
 function playAudio(title) {
   audio.src = `./music.mp3/${title}.mp3`;
   audio.play();
-}
-function pauseAudio() {
-  audio.pause();
 }
 play.addEventListener("click", () => {
   let isPlay = player.classList.contains("pause");
@@ -222,11 +219,10 @@ const li = document.querySelectorAll(".play-item");
 play.addEventListener("click", () => {
   console.log(play.addEventListener);
   if (!isPlay) {
-    playList[playNum - 1].title;
+    playAudio("Anivar - Nothing to hide");
     play.classList.remove("pause");
     playListActive(playNum - 1);
   } else {
-    playList[playNum - 1].title;
     play.classList.add("pause");
   }
   play.classList.toggle("pause");
