@@ -172,11 +172,11 @@ function playAudio(title) {
   audio.play();
 }
 function pauseAudio() {
-  player.remove("plays");
+  player.remove("pause");
   audio.pause();
 }
 play.addEventListener("click", () => {
-  let isPlay = player.classList.contains("plays");
+  let isPlay = player.classList.contains("pause");
   if (isPlay) {
     pauseAudio();
   } else {
@@ -220,7 +220,9 @@ playList.forEach((item) => {
   renderPlayListName(item);
 });
 const li = document.querySelectorAll(".play-item");
+
 play.addEventListener("click", () => {
+  console.log(play.addEventListener);
   if (!isPlay) {
     playAudio(playList[playNum - 1].title);
     play.classList.remove("pause");
@@ -231,8 +233,8 @@ play.addEventListener("click", () => {
   }
   play.classList.toggle("pause");
 });
+
 playNexts.addEventListener("click", () => {
-  console.log(playNexts.addEventListener);
   isPlay = true;
   playNext(playNum);
   playListActive(playNum - 1);
